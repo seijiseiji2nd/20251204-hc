@@ -1,0 +1,90 @@
+@charset "UTF-8";  /* 文字コードをUTF-8として指定 */
+@import "https://unpkg.com/ress/dist/ress.min.css"; /* リセットCSSを読み込み */
+
+* {
+  box-sizing: border-box; /* 幅計算にpaddingとborderを含める */
+}
+
+/*===== ギャラリーのためのCSS =====*/
+
+.gallery {
+  columns: 4;         /* 段組みの数（4列表示） */
+  padding: 0 15px;    /* 左右に15pxの余白をつける */
+}
+
+.gallery li {
+  margin-bottom: 20px; /* 下に20pxの余白をつける */
+}
+
+/* ギャラリー内の画像設定 */
+.gallery img {
+  width: 100%;              /* 親要素に対して横幅100%にする */
+  height: auto;             /* アスペクト比を維持して高さ自動調整 */
+  vertical-align: bottom;   /* 画像下の余白を消す */
+}
+
+/* 横幅900px以下の段組み設定 */
+@media only screen and (max-width: 900px) {
+  .gallery {
+    columns: 3;   /* 3列に変更 */
+  }
+}
+
+/* 横幅768px以下の段組み設定 */
+@media only screen and (max-width: 768px) {
+  .gallery {
+    columns: 2;   /* 2列に変更 */
+  }
+}
+
+/*===== レイアウトのためのCSS =====*/
+
+ul {
+  margin: 0;          /* 上下左右の余白を消す */
+  padding: 0;         /* 内側余白を消す */
+  list-style: none;   /* リストマーカーを消す */
+}
+
+a {
+  color: #333;        /* リンク文字色を濃いグレーに */
+}
+
+a:hover,
+a:active {
+  text-decoration: none; /* ホバー・クリック時の下線を消す */
+}
+
+h1 {
+  text-align: center;        /* 中央寄せ */
+  font-size: 6vw;            /* 画面幅に応じた文字サイズ */
+  letter-spacing: 0.1em;     /* 文字間隔を0.1em広げる */
+  text-transform: uppercase; /* 英字を大文字に変換 */
+  margin: 30px 0;            /* 上下に30pxの余白 */
+}
+
+p {
+  margin: 0 10px 10px 10px; /* 上右下左の余白を設定 */
+  word-wrap: break-word;    /* 長い単語も適切に折り返し */
+}
+
+/*===== 画像を出現させるアニメーションCSS =====*/
+
+.flipLeft {
+  animation-name: flipLeft;         /* 使用するアニメーション名 */
+  animation-duration: 0.5s;         /* アニメーションの再生時間 */
+  animation-fill-mode: forwards;    /* 終了後に状態を保持する */
+  perspective-origin: left center;  /* 立体回転の基準位置を指定 */
+  opacity: 0;                        /* 初期状態は透明 */
+}
+
+/* 左からふわっと回転してくるアニメーション定義 */
+@keyframes flipLeft {
+  from {
+    transform: perspective(600px) translate3d(0, 0, 0) rotateY(30deg); /* 30度傾けた状態から開始 */
+    opacity: 0;  /* 透明 */
+  }
+
+  to {
+    transform: perspective(600px) translate3d(0, 0, 0) rotateY(0deg); /* 正面の位置へ */
+    opacity: 1; /* 不透明に */
+  }}

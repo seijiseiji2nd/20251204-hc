@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ファイルタイプ選択</title>
+    <style>
+        /* スタイルは簡潔に、見やすくするためのものです */
+        .option-container {
+            font-family: sans-serif;
+            padding: 20px;
+            border: 1px solid #ccc;
+            max-width: 300px;
+            margin: 50px auto;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .option-container h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        select {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="option-container">
+        <h2>ファイルの種類を選択してください</h2>
+        
+        <label for="file-select" style="display: block; margin-bottom: 10px;">ファイルタイプ:</label>
+        
+        <select id="file-select" onchange="jumpPage(this)">
+            
+            <option value="" disabled selected>-- 選択してください --</option>
+            
+            <option value="custum/index.html">カスタム</option>
+            <option value="sample/index.html">サンプル</option>
+            
+        </select>
+    </div>
+
+    <script>
+        /**
+         * セレクトボックスの選択肢に基づき、ページ遷移を実行する
+         * @param {HTMLSelectElement} selectElement - 選択された <select> 要素
+         */
+        function jumpPage(selectElement) {
+            // 選択されたオプションの value（ここではURL）を取得
+            const url = selectElement.value;
+
+            // valueが空ではない（つまり、カスタムかサンプルが選ばれた）場合のみ遷移を実行
+            if (url) {
+                // 現在のウィンドウを新しいURLへ移動させる
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+</html>

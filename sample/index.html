@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Gallery</title>
+  <!------- CSS ------->
+  <!-- lightbox.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css">
+  <!-- style.css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Gallery</h1>
+
+    <ul class="gallery">
+      <!-- gallery1 -->
+      <li>
+        <a href="assets/img/01.jpg" data-lightbox="gallery1" data-title="グループ1キャプション">
+          <img src="assets/img/01.jpg" alt="">
+        </a>
+      </li>
+
+      （中略）
+
+      <li>
+        <a href="assets/img/16.jpg" data-lightbox="gallery1" data-title="グループ1キャプション">
+          <img src="assets/img/16.jpg" alt="">
+        </a>
+      </li>
+
+      <!-- gallery2 -->
+      <li>
+        <a href="assets/img/17.jpg" data-lightbox="gallery2" data-title="グループ2キャプション">
+          <img src="assets/img/17.jpg" alt="">
+        </a>
+      </li>
+
+      （中略）
+
+      <li>
+        <a href="assets/img/24.jpg" data-lightbox="gallery2" data-title="グループ2キャプション">
+          <img src="assets/img/24.jpg" alt="">
+        </a>
+      </li>
+
+      <!-- gallery3 -->
+      <li>
+        <a href="assets/img/25.jpg" data-lightbox="gallery3" data-title="グループ3キャプション">
+          <img src="assets/img/25.jpg" alt="">
+        </a>
+      </li>
+
+      （中略）
+
+      <li>
+        <a href="assets/img/30.jpg" data-lightbox="gallery3" data-title="グループ3キャプション">
+          <img src="assets/img/30.jpg" alt="">
+        </a>
+      </li>
+    </ul><!-- /.gallery -->
+  </div><!-- /.wrapper -->
+
+  <!------- JS ------->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <!-- lightbox.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js"></script>
+  <script src="assets/js/script.js">
+    lightbox.option({
+  'wrapAround': true, 'albumLabel': '%1 / total %2'   });
+  function fadeAnime() {
+  // flpLeft
+  $('.gallery li').each(function() {
+    var elemPos = $(this).offset().top;
+    var scroll = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    if (scroll >= elemPos - windowHeight) {
+      $(this).addClass('flipLeft');
+    } else {
+      $(this).removeClass('flipLeft');
+    }
+  });}
+$(window).scroll(function() {
+  fadeAnime();});
+
+  </script>
+</body>
+</html>
